@@ -1,0 +1,15 @@
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\bin\Debug\net8.0\Ora2.exe
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\bin\Debug\net8.0\Ora2.deps.json
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\bin\Debug\net8.0\Ora2.runtimeconfig.json
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\bin\Debug\net8.0\Ora2.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\bin\Debug\net8.0\Ora2.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.AssemblyInfoInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.AssemblyInfo.cs
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.csproj.CoreCompileInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.sourcelink.json
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\refint\Ora2.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\Ora2.genruntimeconfig.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Ora2\Ora2\obj\Debug\net8.0\ref\Ora2.dll
