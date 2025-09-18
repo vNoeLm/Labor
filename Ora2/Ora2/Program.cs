@@ -1,4 +1,6 @@
-﻿namespace Ora2
+﻿using System.Drawing;
+
+namespace Ora2
 {
     internal class Program
     {
@@ -9,8 +11,129 @@
             //Feladat2();
             //Feladat3E();
             //Feladat4();
+            //Feladat5E();
             //Feladat6();
-            Feladat11();
+            //Feladat7();
+            //Feladat8E();
+            //Feladat9();
+            //Feladat10E();
+            //Feladat11();
+            //Feladat13E();
+        }
+
+        private static void Feladat13E()
+        {
+            Console.Write("Adja meg a kezdo arfolyamot: ");
+            double Pt = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Add meg az R-t: ");
+            double R = double.Parse(Console.ReadLine());
+
+            Random rnd = new Random();
+            Console.Write("Adja meg hany orat szeretne szimulalni: ");
+            int time = int.Parse(Console.ReadLine());
+            for (int i = 0; i <= time; i++)
+            {
+                int a1 = rnd.Next(-100, -1);
+                int a2 = rnd.Next(1, 100);
+                int Et = rnd.Next(a1, a2);
+                Pt = R * Pt + Et;
+                Console.WriteLine(Pt);
+            }
+        }
+
+        private static void Feladat10E()
+        {
+            Console.Write("Adjon meg egy szamot: ");
+            uint number = uint.Parse(Console.ReadLine());
+            string ket = "";
+            string temp = "";
+            while (number >= 1)
+            {
+                ket += number % 2;
+                number = number / 2;
+            }
+            for (int i = 1; i <= ket.Length; i++)
+            {
+                temp += ket[ket.Length - i];
+            }
+            ket = Convert.ToString(temp).PadLeft(32, '0');
+            for (int i = 0; i < ket.Length; i++)
+            {
+                if (i % 8 == 0 && i > 0)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write(ket[i]);
+            }
+        }
+
+        private static void Feladat9()
+        {
+            Console.Write("Adjon meg valamennyi masodpercet: ");
+            int sec = int.Parse(Console.ReadLine());
+            while (sec > 0)
+            {
+                Console.Clear();
+                Console.WriteLine($"{sec / 60} perc {sec % 60} masodperc");
+                sec--;
+                Thread.Sleep(1000);
+            }
+        }
+
+        private static void Feladat8E()
+        {
+            int number = 9;
+            Console.Write("   ");
+            for (int i = 1; i <= number; i++)
+            {
+                Console.Write($"{i,2} "); 
+            }
+            Console.WriteLine();
+
+            for (int i = 1; i <= number; i++)
+            {
+                Console.Write($"{i,2} ");
+                for (int j = 1; j <= number; j++)
+                {
+                    Console.Write($"{i * j,2} ");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        private static void Feladat7()
+        {
+            Console.Write("Adj meg egy számot: ");
+            int number = int.Parse(Console.ReadLine());
+            int sum = number;
+            for (int i = 1; i < number; i++)
+            {
+                sum = sum * (number - i);
+            }
+            Console.WriteLine(sum);
+        }
+
+        private static void Feladat5E()
+        {
+            Random rnd = new Random();
+            int number = rnd.Next(1, 101);
+            Console.Write("Gondoltam egy számra 1 és 100 között. Találd ki!: ");
+            int guess = int.Parse(Console.ReadLine());
+            while (guess != number)
+            {
+                if (guess < number)
+                {
+                    Console.Write("Nagyobb számra gondoltam: ");
+                }
+                else
+                {
+                    Console.Write("Kisebb számra gondoltam: ");
+                }
+                guess = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("Eltaláltad a számot!");
         }
 
         private static void Feladat11()
@@ -144,7 +267,15 @@
 
         private static void Feladat3E()
         {
-            Console.WriteLine($"asd{number}");
+            Random rnd = new Random();
+            int guess = rnd.Next(1, 1001);
+            int guessCount = 0;
+            while (guess  != number)
+            {
+                guessCount++;
+                guess = rnd.Next(1, 1001);
+            }
+            Console.WriteLine($"A szám {number} volt.A gép {guessCount} próbálkozásból találta el.");
         }
 
         private static void Feladat2()
