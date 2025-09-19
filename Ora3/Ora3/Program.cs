@@ -9,8 +9,77 @@ namespace Ora3
         {
             //Feladat1();
             //Feladat2();
-            Feladat3();
+            //Feladat3();
             //Feladat5();
+            Feladat6();
+        }
+
+        private static void Feladat6()
+        {
+            Console.Write("Add meg mekkora legyen a tomb egyik dimenzioja: ");
+            int dim1 = int.Parse(Console.ReadLine());
+            Console.Write("Add meg mekkora legyen a tomb masik dimenzioja: ");
+            int dim2 = int.Parse(Console.ReadLine());
+            int[,] numbers = new int[dim1, dim2];
+            int val = 1;
+            for (int i = 0; i < dim1; i++)
+            {
+                for (int j = 0; j < dim2; j++)
+                {
+                    numbers[i, j] = val++;
+                }
+            }
+            //Eredeti Matrix
+            for (int i = 0; i < dim1; i++)
+            {
+                for (int j = 0; j < dim2; j++)
+                {
+                    Console.Write(numbers[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            //Tukrozott Matrix
+            if (dim1 != dim2)
+            {
+                int[,] tran = new int[dim2, dim1];
+                for (int i = 0; i < dim1; i++)
+                {
+                    for (int j = 0; j < dim2; j++)
+                    {
+                        tran[j, i] = numbers[i, j];
+                    }
+                }
+                Console.WriteLine("----Tukorzott-----");
+                for (int i = 0; i < dim2; i++)
+                {
+                    for (int j = 0; j < dim1; j++)
+                    {
+                        Console.Write(tran[i, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dim1; i++)
+                {
+                    for (int j = 1; j < dim2; j++)
+                    {
+                        (numbers[i, j], numbers[j, i]) = (numbers[j, i], numbers[i, j]);
+                    }
+                }
+                Console.WriteLine("----Tukorzott-----");
+                for (int i = 0; i < dim1; i++)
+                {
+                    for (int j = 0; j < dim2; j++)
+                    {
+                        Console.Write(numbers[i, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+            }
         }
 
         private static void Feladat5()
@@ -42,10 +111,17 @@ namespace Ora3
             double avgNoE = 0;
             int has = 0;
             int index = 0;
+            int ag = int.MinValue;
+            int agIn = 0;
             foreach (int a in Age)
             {
                 if (HasE[index] == true)
                 {
+                    if (Age[index] > ag)
+                    {
+                        ag = Age[index];
+                        agIn = index;
+                    }
                     avgNoE += a;
                     index++;
                     has++;
@@ -57,6 +133,7 @@ namespace Ora3
             }
             Console.WriteLine($"Az atlag eletkor: {avgAge / Age.Count}");
             Console.WriteLine($"Az atlag eletkor programozas tapasztalat nelkul: {avgNoE / has}");
+            Console.WriteLine($"A legidosebb programozas tudassal rendelkezo szemely: {Age[agIn]} eves es {Name[agIn]} a neve");
         }
 
         private static void Feladat3()
