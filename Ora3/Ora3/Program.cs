@@ -11,14 +11,171 @@ namespace Ora3
             //Feladat2();
             //Feladat3();
             //Feladat5();
-            Feladat6();
+            //Feladat6();
+            //Feladat8();
+            //Feladat9();
+            //Feladat10();
+            Feladat11();
+;
+        }
+
+        private static void Feladat11()
+        {
+            Console.WriteLine("Add meg a matrix egyik meretet: ");
+            int dim1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Add meg a matrix masik meretet: ");
+            int dim2 = int.Parse(Console.ReadLine());
+            int[,] Matrix = new int[dim1, dim2];
+            int index = 1;
+            //Eredeti
+            for (int i = 0; i < dim1; i++)
+            {
+                for (int j = 0; j < dim2; j++)
+                {
+                    Matrix[i, j] = index++;
+                }
+            }
+            for (int i = 0; i < dim1; i++)
+            {
+                for (int j = 0; j < dim2; j++)
+                {
+                    Console.Write("{0,3}",Matrix[i,j]);
+                }
+                Console.WriteLine();
+            }
+            //Rotated
+            Console.WriteLine("---Rotated---");
+            int[,] Rotated = new int[dim2, dim1];
+            for (int i = 0; i < dim2; i++)
+            {
+                for (int j = 0; j < dim1; j++)
+                {
+                    Rotated[j, dim1 - 2 - i] = Matrix[i, j];
+                }
+            }
+            for (int i = 0; i < dim2; i++)
+            {
+                for (int j = 0; j < dim1; j++)
+                {
+                    Console.Write("{0,3}", Rotated[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Feladat10()
+        {
+            List<int> Numbers = new List<int>();
+            List<int> Other = new List<int>();
+            Console.WriteLine("Add meg milyen hosszu legyen a lista: ");
+            int len = int.Parse(Console.ReadLine());
+            Random rnd = new Random();
+            for (int i = 0; i < len; i++)
+            {
+                Numbers.Add(rnd.Next(1, 100));
+            }
+            for (int i = 0; i < Numbers.Count; i += 2)
+            {
+                Other.Add(Numbers[i]);
+            }
+            foreach (int i in Other)
+            {
+                Console.Write("{0,4}",i);
+            }
+            Console.WriteLine();
+            for (int i = 0; i < Other.Count / 2; i++)
+            {
+                (Other[i], Other[Other.Count - i - 1]) = (Other[Other.Count - i - 1], Other[i]);
+            }
+            Console.WriteLine();
+            foreach (int i in Other)
+            {
+                Console.Write("{0,4}", i);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            int[,] Matrix;
+            int k = 1;
+            while (k * k < Other.Count)
+            {
+                k++;
+            }
+            Matrix = new int[k, k];
+            int index = 0;
+            for (int i = 0; i < k; i++ )
+            {
+                for (int j = 0; j < k; j++)
+                {
+                    if (index < Other.Count)
+                    {
+                        Matrix[i, j] = Other[index++];
+                    }
+                    else
+                    {
+                        Matrix[i, j] = 0;
+                    }
+                }
+            }
+
+            for (int i = 0; i < k; i++)
+            {
+                for (int j = 0; j < k; j++)
+                {
+                    Console.Write("{0,4}", Matrix[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Feladat9()
+        {
+            int[] x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+            for (int i = 0; i < x.Length / 2; i++)
+            {
+                int tmp = x[i];
+                x[i] = x[x.Length - i - 1];
+                x[x.Length - i - 1] = tmp;
+            }
+
+            foreach (var i in x)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        private static void Feladat8()
+        {
+            List<int> Numbers = new List<int>();
+            Console.WriteLine("Adjon meg egy egesz szamot: ");
+            int num = int.Parse(Console.ReadLine());
+            Numbers.Add(num);
+            while(num != 1)
+            {
+                if (num % 2 == 0)
+                {
+                    num = num / 2;
+                    Numbers.Add(num);
+                }
+                else
+                {
+                    num = num * 3 + 1;
+                    Numbers.Add(num);
+                }
+            }
+            foreach(var n in Numbers)
+            {
+                Console.Write(n + " | ");
+            }
         }
 
         private static void Feladat6()
         {
-            Console.Write("Add meg mekkora legyen a tomb egyik dimenzioja: ");
+            Console.Write("Add meg mekkora legyen a tomb egyik merete: ");
             int dim1 = int.Parse(Console.ReadLine());
-            Console.Write("Add meg mekkora legyen a tomb masik dimenzioja: ");
+            Console.Write("Add meg mekkora legyen a tomb masik merete: ");
             int dim2 = int.Parse(Console.ReadLine());
             int[,] numbers = new int[dim1, dim2];
             int val = 1;
@@ -34,51 +191,30 @@ namespace Ora3
             {
                 for (int j = 0; j < dim2; j++)
                 {
-                    Console.Write(numbers[i, j] + " ");
+                    Console.Write("{0,3}",numbers[i, j]);
                 }
                 Console.WriteLine();
             }
 
-            //Tukrozott Matrix
-            if (dim1 != dim2)
+            //Transformalt Matrix
+            int[,] tran;
+            tran = new int[dim2, dim1];
+            for (int i = 0; i < dim1; i++)
             {
-                int[,] tran = new int[dim2, dim1];
-                for (int i = 0; i < dim1; i++)
+                for (int j = 0; j < dim2; j++)
                 {
-                    for (int j = 0; j < dim2; j++)
-                    {
-                        tran[j, i] = numbers[i, j];
-                    }
-                }
-                Console.WriteLine("----Tukorzott-----");
-                for (int i = 0; i < dim2; i++)
-                {
-                    for (int j = 0; j < dim1; j++)
-                    {
-                        Console.Write(tran[i, j] + "  ");
-                    }
-                    Console.WriteLine();
+                    tran[j, i] = numbers[i, j];
                 }
             }
-            else
-            {
-                for (int i = 0; i < dim1; i++)
-                {
-                    for (int j = 1; j < dim2; j++)
-                    {
-                        (numbers[i, j], numbers[j, i]) = (numbers[j, i], numbers[i, j]);
-                    }
-                }
-                Console.WriteLine("----Tukorzott-----");
-                for (int i = 0; i < dim1; i++)
-                {
-                    for (int j = 0; j < dim2; j++)
-                    {
-                        Console.Write(numbers[i, j] + "  ");
-                    }
-                    Console.WriteLine();
-                }
 
+            Console.WriteLine("------Transformalt------");
+            for (int i = 0; i < tran.GetLength(0); i++)
+            {
+                for (int j = 0; j < tran.GetLength(1); j++)
+                {
+                    Console.Write("{0,3}",tran[i, j]);
+                }
+                Console.WriteLine();
             }
         }
 
