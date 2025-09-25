@@ -15,7 +15,7 @@ namespace Ora3
             //Feladat8();
             //Feladat9();
             //Feladat10();
-            Feladat11();
+            //Feladat11();
 ;
         }
 
@@ -44,20 +44,28 @@ namespace Ora3
                 Console.WriteLine();
             }
             //Rotated
+            Console.Write("Add meg hányszor legyen elforgatva a mátrix: ");
+            int rotate = int.Parse(Console.ReadLine()) % 4;
             Console.WriteLine("---Rotated---");
+            //csak ha n * n mert bena vagyok
             int[,] Rotated = new int[dim2, dim1];
-            for (int i = 0; i < dim2; i++)
+            for(int k = 1; k <= rotate; k++)
             {
-                for (int j = 0; j < dim1; j++)
+                for (int i = 0; i < dim2; i++)
                 {
-                    Rotated[j, dim1 - 2 - i] = Matrix[i, j];
+                    for (int j = 0; j < dim1; j++)
+                    {
+                        Rotated[j, dim1 - 1 - i] = Matrix[i, j];
+                    }
                 }
+                Matrix = Rotated;
+                Rotated = new int[dim2, dim1];
             }
             for (int i = 0; i < dim2; i++)
             {
                 for (int j = 0; j < dim1; j++)
                 {
-                    Console.Write("{0,3}", Rotated[i, j]);
+                    Console.Write("{0,3}", Matrix[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -223,13 +231,14 @@ namespace Ora3
             List<string> Name = new List<string>();
             List<int> Age = new List<int>();
             List<bool> HasE = new List<bool>();
-            while (true)
+            bool inp = true;
+            while (inp)
             {
                 Console.Write("Adj meg egy neve: ");
                 string name = Console.ReadLine();
                 if (name == "")
                 {
-                    break;
+                    inp = false;
                 }
                 Console.Write("Adj meg egy kort: ");
                 int age = int.Parse(Console.ReadLine());
