@@ -1,0 +1,15 @@
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\bin\Debug\net8.0\Ora4.exe
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\bin\Debug\net8.0\Ora4.deps.json
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\bin\Debug\net8.0\Ora4.runtimeconfig.json
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\bin\Debug\net8.0\Ora4.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\bin\Debug\net8.0\Ora4.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.AssemblyInfoInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.AssemblyInfo.cs
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.csproj.CoreCompileInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.sourcelink.json
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\refint\Ora4.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\Ora4.genruntimeconfig.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Ora4\Ora4\obj\Debug\net8.0\ref\Ora4.dll

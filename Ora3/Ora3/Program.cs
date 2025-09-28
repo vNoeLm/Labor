@@ -16,7 +16,76 @@ namespace Ora3
             //Feladat9();
             //Feladat10();
             //Feladat11();
+            Feladat12();
 ;
+        }
+
+        private static void Feladat12()
+        {
+            Console.Write("Mekkora legyen a labirintus?: ");
+            int dim1 = int.Parse(Console.ReadLine());
+            Console.Write("Mekkora legyen a labirintus?: ");
+            int dim2 = int.Parse(Console.ReadLine());
+            string[,] lab = new string[dim1, dim2];
+            Random rnd = new Random();
+            Console.Write("Add meg a kezdo kordinatakat: ");
+            int kord1 = int.Parse(Console.ReadLine());
+            Console.Write("Add meg a kezdo kordinatakat: ");
+            int kord2 = int.Parse(Console.ReadLine());
+            Console.Clear();
+            Console.WriteLine("---Labirintus---");
+            for (int i = 0; i < dim1; i++)
+            {
+                for (int j = 0; j < dim2; j++)
+                {
+                    lab[i, j] = rnd.Next(0, 2) == 1 ? "T" : "F";
+                    Console.Write(lab[i, j] + " ");
+                }
+                Console.WriteLine();
+            };
+            List<(int, int)> Moves = new List<(int, int)>();
+            bool[,] Vis = new bool[dim1, dim2];
+            int[] row = {1, -1, 0, 0};
+            int[] col = { 0, 0, 1, -1 };
+            bool IsEnd(int x, int y) =>
+                x == dim1 - 1 && y == dim2 - 1;
+
+            bool FindPath(int x, int y)
+            {
+                if (x >= dim1 || y >= dim2) return false;
+                if (lab[x, y] != "T" || Vis[x, y]) return false;
+                Moves.Add((x, y));
+                Vis[x, y] = true;
+                if (IsEnd(x, y)) return true;
+                for (int i = 0; i < 4; i++)
+                {
+                    int nx = x + row[i];
+                    int ny = y + col[i];
+                    if (FindPath(nx, ny)) return true;
+                }
+                Moves.RemoveAt(Moves.Count - 1); // backtrack
+                return false;
+            }
+
+            Moves.Clear();
+            Array.Clear(Vis, 0, Vis.Length);
+            if (lab[kord1, kord2] == "T")
+            {
+                if (FindPath(kord1, kord2))
+                {
+                    Console.WriteLine("Path to exit found:");
+                    foreach (var move in Moves)
+                        Console.WriteLine(move);
+                }
+                else
+                {
+                    Console.WriteLine("No path to exit found.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nincs megoldas!");
+            }
         }
 
         private static void Feladat11()

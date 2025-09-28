@@ -1,0 +1,15 @@
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\bin\Debug\net8.0\Hazi.exe
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\bin\Debug\net8.0\Hazi.deps.json
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\bin\Debug\net8.0\Hazi.runtimeconfig.json
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\bin\Debug\net8.0\Hazi.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\bin\Debug\net8.0\Hazi.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.AssemblyInfoInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.AssemblyInfo.cs
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.csproj.CoreCompileInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.sourcelink.json
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\refint\Hazi.dll
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\Hazi.genruntimeconfig.cache
+C:\Users\vnoel\Documents\GitHub\Labor\Hazi\Hazi\obj\Debug\net8.0\ref\Hazi.dll
