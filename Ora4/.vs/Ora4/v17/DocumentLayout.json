@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Ora4\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\vnoel\\Downloads\\PMPHF013_LP9M4L.cs.csh||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{69746386-C7D1-42DD-B790-DCC1641155CE}|Ora4\\Ora4.csproj|c:\\users\\vnoel\\documents\\github\\labor\\ora4\\ora4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69746386-C7D1-42DD-B790-DCC1641155CE}|Ora4\\Ora4.csproj|solutionrelative:ora4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,17 +17,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PMPHF013_LP9M4L.cs.csh",
+              "DocumentMoniker": "C:\\Users\\vnoel\\Downloads\\PMPHF013_LP9M4L.cs.csh",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Downloads\\PMPHF013_LP9M4L.cs.csh",
+              "ToolTip": "C:\\Users\\vnoel\\Downloads\\PMPHF013_LP9M4L.cs.csh",
+              "RelativeToolTip": "..\\..\\..\\..\\Downloads\\PMPHF013_LP9M4L.cs.csh",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-01T10:23:14.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Ora4\\Ora4\\Program.cs",
               "RelativeDocumentMoniker": "Ora4\\Program.cs",
               "ToolTip": "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Ora4\\Ora4\\Program.cs",
               "RelativeToolTip": "Ora4\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwA8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-28T19:04:20.115Z",
               "EditorCaption": ""

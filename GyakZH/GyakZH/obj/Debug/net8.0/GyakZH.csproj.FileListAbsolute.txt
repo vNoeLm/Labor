@@ -1,0 +1,15 @@
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\bin\Debug\net8.0\GyakZH.exe
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\bin\Debug\net8.0\GyakZH.deps.json
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\bin\Debug\net8.0\GyakZH.runtimeconfig.json
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\bin\Debug\net8.0\GyakZH.dll
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\bin\Debug\net8.0\GyakZH.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.AssemblyInfoInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.AssemblyInfo.cs
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.csproj.CoreCompileInputs.cache
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.sourcelink.json
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.dll
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\refint\GyakZH.dll
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.pdb
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\GyakZH.genruntimeconfig.cache
+C:\Users\vnoel\Documents\GitHub\Labor\GyakZH\GyakZH\obj\Debug\net8.0\ref\GyakZH.dll

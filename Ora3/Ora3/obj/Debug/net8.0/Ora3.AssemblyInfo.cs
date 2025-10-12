@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ora3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac32dc50c8c7ae9ae9307cf3e8e04b160e5ae908")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+278b381130c76be11af5ef9a1348c8d729cce13f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ora3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ora3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
