@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|c:\\users\\noel\\documents\\github\\labor\\ora8\\ora8\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|solutionrelative:ora8\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|c:\\users\\noel\\documents\\github\\labor\\ora8\\ora8\\field.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|solutionrelative:ora8\\field.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|c:\\users\\noel\\documents\\github\\labor\\ora8\\ora8\\buffalo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|solutionrelative:ora8\\buffalo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|c:\\users\\noel\\documents\\github\\labor\\ora8\\ora8\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABC3F563-DFA3-4172-9774-B7FDB7612476}|Ora8\\Ora8.csproj|solutionrelative:ora8\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Game.cs",
+              "RelativeDocumentMoniker": "Ora8\\Game.cs",
+              "ToolTip": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Game.cs",
+              "RelativeToolTip": "Ora8\\Game.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAiwFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T21:22:01.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Buffalo.cs",
+              "DocumentMoniker": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Buffalo.cs",
+              "RelativeDocumentMoniker": "Ora8\\Buffalo.cs",
+              "ToolTip": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Buffalo.cs",
+              "RelativeToolTip": "Ora8\\Buffalo.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAUwCkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T20:54:24.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Field.cs",
+              "DocumentMoniker": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Field.cs",
+              "RelativeDocumentMoniker": "Ora8\\Field.cs",
+              "ToolTip": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Field.cs",
+              "RelativeToolTip": "Ora8\\Field.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T20:43:13.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Program.cs",
+              "RelativeDocumentMoniker": "Ora8\\Program.cs",
+              "ToolTip": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Program.cs",
+              "RelativeToolTip": "Ora8\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T20:39:07.72Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

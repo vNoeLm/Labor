@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ora8
+{
+    internal class Game
+    {
+        private Field field;
+        private List<Buffalo> buffalos;
+
+        public Game(int fieldSize, int buffaloCount)
+        {
+            field = new Field(fieldSize);
+            buffalos = new List<Buffalo>();
+            for (int i = 0; i < buffaloCount; i++)
+            {
+                buffalos.Add(new Buffalo());
+            }
+        }
+
+        public bool IsOver
+        {
+            get
+            {
+                bool AllDead = true;
+                bool AnyAtTarget = false;
+
+                foreach(Buffalo b in buffalos)
+                {
+                    if (b.IsAlive)
+                    {
+                        AllDead = false;
+                        if (b.PosX == field.TargetX && b.PosY == field.TargetY)
+                        {
+                            AnyAtTarget = true;
+                        }
+                    }
+                }
+                return AllDead || AnyAtTarget;
+            }
+        }
+
+        private void VisualizeElements()
+        {
+            Console.Clear();
+            field.Show();
+            foreach (Buffalo b in buffalos)
+            {
+                b.Show();
+            }
+        }
+
+        private void Shoot(int posX, int posY)
+        {
+            foreach(Buffalo b in buffalos)
+            {
+                if (b.IsAlive && b.PosX == posX && b.PosY == posY)
+                {
+                    b.Deactivate();
+                }
+            }
+        }
+
+        public void Run()
+        {
+            VisualizeElements();
+            while (!IsOver)
+            {
+                Console.Write("Add meg hova akarsz loni (x,y): ");
+                string[] inputs = Console.ReadLine().Split(' ');
+                int shootX = int.Parse(inputs[0]);
+                int shootY = int.Parse(inputs[1]);
+                Shoot(shootX, shootY);
+                foreach(Buffalo b in buffalos)
+                {
+                    b.Move(field);
+                }
+                VisualizeElements();
+            }
+            Console.WriteLine("Game Over!");
+        }
+
+    }
+}

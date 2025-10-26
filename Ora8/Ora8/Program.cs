@@ -6,6 +6,18 @@ namespace Ora8
     {
         static void Main(string[] args)
         {
+            //Feladat1();
+            Feladat2();
+        }
+
+        private static void Feladat2()
+        {
+            Game game = new Game(5, 3);
+            game.Run();
+        }
+
+        private static void Feladat1()
+        {
             Team myTeam = new Team();
             while (!myTeam.IsFull())
             {

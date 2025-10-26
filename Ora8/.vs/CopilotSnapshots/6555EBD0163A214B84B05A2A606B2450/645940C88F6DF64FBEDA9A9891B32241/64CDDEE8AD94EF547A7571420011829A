@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ora8
+{
+    internal class Buffalo
+    {
+         static Random rnd = new Random();
+
+        private int _PosX;
+        private int _PosY;
+        public int PosX
+        { 
+            get
+            {
+                return _PosX;
+            }
+        }
+        public int PosY
+        {
+            get
+            {
+                return _PosY;
+            }
+        }
+
+        public bool IsAlive = true;
+
+        public void Show()
+        {
+            if (IsAlive)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            int ConsolePosX = _PosX * 4 + 2;
+            int ConsolePosY = _PosY * 2 + 2;
+
+            Console.SetCursorPosition(ConsolePosX, ConsolePosY);
+            Console.Write("B");
+            Console.SetCursorPosition(0,0);
+            Console.ResetColor();
+        }
+
+        public void Deactivate()
+        {
+            IsAlive = false;
+        }
+        public void Move(Field field)
+        {
+            if (!IsAlive)
+            {
+                return;
+            }
+
+            while (true)
+            {
+                int newX = _PosX;
+                int newY = _PosY;
+                int direction = rnd.Next(3);
+
+                switch (direction)
+                {
+                    case 0: // right
+                        newX += 1;
+                        break;
+                    case 1: // down
+                        newY += 1;
+                        break;
+                    case 2: // right-down
+                        newX += 1;
+                        newY += 1;
+                        break;
+                }
+                if (field.AllowedPosition(newX, newY))
+                {
+                    _PosX = newX;
+                    _PosY = newY;
+                    return;
+                }
+            }
+        }
+    }
+}

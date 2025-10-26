@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Noel\\Desktop\\asd\\Ora8\\Ora8\\Ora8.csproj",
+      "projectUniqueName": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Ora8.csproj",
       "projectName": "Ora8",
-      "projectPath": "C:\\Users\\Noel\\Desktop\\asd\\Ora8\\Ora8\\Ora8.csproj",
+      "projectPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\Ora8.csproj",
       "packagesPath": "C:\\Users\\Noel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Noel\\Desktop\\asd\\Ora8\\Ora8\\obj\\",
+      "outputPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Ora8\\Ora8\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

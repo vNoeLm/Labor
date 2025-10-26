@@ -1,0 +1,127 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ora8
+{
+    internal class Game
+    {
+        private Field field;
+        private List<Buffalo> buffalos;
+
+        public Game(int fieldSize, int buffaloCount)
+        {
+            field = new Field(fieldSize);
+            buffalos = new List<Buffalo>();
+            for (int i = 0; i < buffaloCount; i++)
+            {
+                buffalos.Add(new Buffalo());
+            }
+        }
+
+        public bool IsOver
+        {
+            get
+            {
+                bool AllDead = true;
+                bool AnyAtTarget = false;
+
+                foreach(Buffalo b in buffalos)
+                {
+                    if (b.IsAlive)
+                    {
+                        AllDead = false;
+                        if (b.PosX == field.TargetX && b.PosY == field.TargetY)
+                        {
+                            AnyAtTarget = true;
+                        }
+                    }
+                }
+                return AllDead || AnyAtTarget;
+            }
+        }
+
+        private void VisualizeElements()
+        {
+            Console.Clear();
+            field.Show();
+            
+            // Create a dictionary to track positions and if there's a live buffalo there
+            Dictionary<(int, int), bool> positions = new Dictionary<(int, int), bool>();
+            
+            // First pass: collect all positions and check if there's any alive buffalo
+            foreach (Buffalo b in buffalos)
+            {
+                var pos = (b.PosX, b.PosY);
+                if (!positions.ContainsKey(pos))
+                {
+                    positions[pos] = b.IsAlive;
+                }
+                else if (b.IsAlive)
+                {
+                    // If there's an alive buffalo at this position, mark it as alive
+                    positions[pos] = true;
+                }
+            }
+
+            // Second pass: show buffalos based on the collected position data
+            foreach (Buffalo b in buffalos)
+            {
+                var pos = (b.PosX, b.PosY);
+                if (positions.ContainsKey(pos))
+                {
+                    // Only show the buffalo once per position
+                    bool isAlive = positions[pos];
+                    positions.Remove(pos); // Remove so we don't show it again
+                    
+                    Console.ForegroundColor = isAlive ? ConsoleColor.Green : ConsoleColor.Red;
+                    int ConsolePosX = b.PosX * 4 + 2;
+                    int ConsolePosY = b.PosY * 2 + 2;
+                    Console.SetCursorPosition(ConsolePosX, ConsolePosY);
+                    Console.Write(isAlive ? "B" : "X");
+                }
+            }
+            
+            Console.SetCursorPosition(0, 0);
+            Console.ResetColor();
+        }
+
+        private void Shoot(int posX, int posY)
+        {
+            foreach(Buffalo b in buffalos)
+            {
+                if (b.IsAlive && b.PosX == posX && b.PosY == posY)
+                {
+                    b.Deactivate();
+                }
+            }
+        }
+
+        public void Run()
+        {
+            foreach(Buffalo b in buffalos)
+            {
+                b.Move(field);
+            }
+            VisualizeElements();
+
+            while (!IsOver)
+            {
+                Console.Write("Add meg hova akarsz loni (x,y): ");
+                string[] inputs = Console.ReadLine().Split(' ');
+                int shootX = int.Parse(inputs[0]);
+                int shootY = int.Parse(inputs[1]);
+                Shoot(shootX, shootY);
+                foreach(Buffalo b in buffalos)
+                {
+                    b.Move(field);
+                }
+                VisualizeElements();
+            }
+            Console.WriteLine("Game Over!");
+        }
+
+    }
+}
