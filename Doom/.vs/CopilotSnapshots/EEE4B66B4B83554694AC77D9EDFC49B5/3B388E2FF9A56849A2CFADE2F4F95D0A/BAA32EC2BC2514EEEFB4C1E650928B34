@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Doom
+{
+    internal class Game
+    {
+        public Player Player { get; }
+        public bool Exited { get; set; }
+
+        private readonly List<GameItem> _Items;
+        public List<GameItem> Items 
+        { 
+            get 
+            { 
+                return _Items ?? new List<GameItem>(); 
+            }
+        }
+
+        public Game()
+        {
+            this.Player = new Player(0, 0);
+            this.Exited = false;
+            this._Items = new List<GameItem>();
+            // Adding some items for testing
+            this._Items.Add(new GameItem(new Position(5, 5), ItemType.Medikit));
+            this._Items.Add(new GameItem(new Position(10, 10), ItemType.Ammo));
+            this._Items.Add(new GameItem(new Position(15, 15), ItemType.Door));
+        }
+
+        private void RenderSingleSprite(ConsoleSprite sprite, Position pos)
+        {
+            if (sprite == null || pos == null)
+                return;
+                
+            if (pos.PosX < 0 ||
+                pos.PosY < 0 ||
+                pos.PosX >= Console.WindowWidth || 
+                pos.PosY >= Console.WindowHeight)
+            {
+                return;
+            }
+            Console.BackgroundColor = sprite.Background;
+            Console.ForegroundColor = sprite.ForeGround;
+            Console.SetCursorPosition(pos.PosX, pos.PosY);
+            Console.WriteLine(sprite.Symbol);
+        }
+
+        private void RenderGame()
+        {
+            Console.CursorVisible = false;
+            Console.ResetColor();
+            Console.Clear();
+            
+            if (_Items != null)
+            {
+                foreach (var item in _Items.ToList())
+                {
+                    if (item?.ItemSprite != null && item?.ItemPos != null)
+                    {
+                        RenderSingleSprite(item.ItemSprite, item.ItemPos);
+                    }
+                }
+            }
+            
+            if (Player?.Sprite != null && Player?.Pos != null)
+            {
+                RenderSingleSprite(Player.Sprite, Player.Pos);
+            }
+        }
+
+        private void UserAction()
+        {
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                int newX = this.Player.Pos.PosX;
+                int newY = this.Player.Pos.PosY;
+
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.Escape:
+                        this.Exited = true;
+                        break;
+                    case ConsoleKey.W:
+                        newY -= 1;
+                        break;
+                    case ConsoleKey.S:
+                        newY += 1;
+                        break;
+                    case ConsoleKey.A:
+                        newX -= 1;
+                        break;
+                    case ConsoleKey.D:
+                        newX += 1;
+                        break;
+                }
+
+                if (newX >= 0 && newX < Console.WindowWidth &&
+                    newY >= 0 && newY < Console.WindowHeight)
+                {
+                    this.Player.Pos.PosX = newX;
+                    this.Player.Pos.PosY = newY;
+                }
+            }
+        }
+
+        private void CleanUpGameItems()
+        {
+            if (_Items == null)
+                return;
+
+            _Items.RemoveAll(item => item != null && !item.Avalaible);
+        }
+
+        public void Run()
+        {
+            while (!this.Exited)
+            {
+                RenderGame();
+                UserAction();
+                CleanUpGameItems();
+                Thread.Sleep(25);
+            }
+        }
+    }
+}   

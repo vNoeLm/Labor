@@ -1,0 +1,15 @@
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\bin\Debug\net8.0\Doom.exe
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\bin\Debug\net8.0\Doom.deps.json
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\bin\Debug\net8.0\Doom.runtimeconfig.json
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\bin\Debug\net8.0\Doom.dll
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\bin\Debug\net8.0\Doom.pdb
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.AssemblyInfoInputs.cache
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.AssemblyInfo.cs
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.csproj.CoreCompileInputs.cache
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.sourcelink.json
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.dll
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\refint\Doom.dll
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.pdb
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.genruntimeconfig.cache
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\ref\Doom.dll

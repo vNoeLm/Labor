@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Doom
+{
+    internal class Game
+    {
+        public Player Player { get; }
+        public bool Exited { get; set; }
+
+        public Game()
+        {
+            this.Player = new Player(0, 0);
+            this.Exited = false;
+        }
+
+        private void RenderSingleSprite(ConsoleSprite sprite, Position pos)
+        {
+            if (pos.PosX < 0 ||
+                pos.PosY < 0 ||
+                pos.PosX >= Console.WindowWidth || 
+                pos.PosY >= Console.WindowHeight)
+            {
+                return;
+            }
+            Console.BackgroundColor = sprite.Background;
+            Console.ForegroundColor = sprite.ForeGround;
+            Console.SetCursorPosition(pos.PosX, pos.PosY);
+            Console.WriteLine(sprite.Symbol);
+        }
+
+        private void RenderGame()
+        {
+            Console.CursorVisible = false;
+            Console.ResetColor();
+            Console.Clear();
+            RenderSingleSprite(this.Player.Sprite, this.Player.Pos);
+        }
+
+        private void UserAction()
+        {
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.Escape:
+                        this.Exited = true;
+                        break;
+                    case ConsoleKey.W:
+                        this.Player.Pos.PosY -= 1;
+                        break;
+                    case ConsoleKey.S:
+                        this.Player.Pos.PosY += 1;
+                        break;
+                    case ConsoleKey.A:
+                        this.Player.Pos.PosX -= 1;
+                        break;
+                    case ConsoleKey.D:
+                        this.Player.Pos.PosX += 1;
+                        break;
+                }
+            }
+        }
+
+        public void Run()
+        {
+            while (!this.Exited)
+            {
+                RenderGame();
+                UserAction();
+                Thread.Sleep(25);
+            }
+        }
+    }
+}   
