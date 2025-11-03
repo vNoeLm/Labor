@@ -12,14 +12,15 @@ namespace Doom
         public ConsoleSprite Sprite { get; set; }
         public double FillingRatio { get; set; }
         public int Ammo { get; set; } = 10;
-
-        private int _hitPoint = 100; 
         public int HitPoint
         {
-            get { return _hitPoint; }
+            get;
             set
             {
-                _hitPoint = Math.Clamp(value, 0, 100);
+                if (HitPoint > 100)
+                {
+                    HitPoint = 100;
+                }
             }
         }
         public int BFGCells { get; set; } = 2;

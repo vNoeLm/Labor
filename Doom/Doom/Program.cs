@@ -21,8 +21,19 @@ namespace Doom
             game.Items.Add(ammo);
             GameItem medkit = new GameItem(new Position(10, 10), ItemType.Medkit);
             game.Items.Add(medkit);
-            GameItem wall = new GameItem(new Position(15, 15), ItemType.Wall);
+            GameItem wall = new GameItem(new Position(5, 15), ItemType.Wall);
             game.Items.Add(wall);
+            GameItem wall2 = new GameItem(new Position(7, 15), ItemType.Wall);
+            game.Items.Add(wall2);
+            GameItem door = new GameItem(new Position(6, 15), ItemType.Door);
+            game.Items.Add(door);
+
+            Demon demon1 = new Demon(20, 5, DemonType.Imp);
+            game.Demons.Add(demon1);
+            Demon demon2 = new Demon(25, 10, DemonType.ZombieMan);
+            game.Demons.Add(demon2);
+            Demon demon3 = new Demon(30, 15, DemonType.Mancubus);
+            game.Demons.Add(demon3);
             game.Run();
         }
 

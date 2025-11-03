@@ -13,13 +13,13 @@ namespace Doom
         public double FillingRatio { get; set; }
         public int Ammo { get; set; } = 10;
 
-        private int _hitPoint = 100; 
+        private int _hitPoint = 100; // backing field with initial value
         public int HitPoint
         {
             get { return _hitPoint; }
             set
             {
-                _hitPoint = Math.Clamp(value, 0, 100);
+                _hitPoint = Math.Clamp(value, 0, 100); // Ensures value is between 0 and 100
             }
         }
         public int BFGCells { get; set; } = 2;

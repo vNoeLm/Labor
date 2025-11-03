@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Doom
 {
-    enum ItemType { Ammo, BFGCell, Door, LevelExit, Medkit, ToxicWaste, Wall }
+    enum ItemType { Ammo, BFGCell, Door, LevelExit, Medkit, ToxicWaste, Wall}
     internal class GameItem
     {
         public Position ItemPos { get; set; }
@@ -58,24 +58,33 @@ namespace Doom
             this.Avalaible = true;
         }
 
-        public void Interact()
+        public void Interact(Player player)
         {
             switch (this.Type)
             {
                 case ItemType.Ammo:
                     this.Avalaible = false;
-                    Player.Ammo += 5;
+                    player.Ammo += 5;
                     break;
                 case ItemType.BFGCell:
                     this.Avalaible = false;
-                    Player.BFGCells += 1;
+                    player.BFGCells += 1;
                     break;
                 case ItemType.Door:
-                    this.FillingRation = 0.0;
+                    if (FillingRation == 1.0)
+                    {
+                        this.FillingRation = 0.0;
+                        this.ItemSprite = new ConsoleSprite(ConsoleColor.DarkGray, ConsoleColor.DarkYellow, '|');
+                    }
+                    else
+                    {
+                        this.FillingRation = 1.0;
+                        this.ItemSprite = new ConsoleSprite(ConsoleColor.DarkGray, ConsoleColor.Yellow, '/');
+                    }
                     break;
                 case ItemType.Medkit:
                     this.Avalaible = false;
-                    Player.HitPoint += 10;
+                    player.HitPoint += 10;
                     break;
             }
         }

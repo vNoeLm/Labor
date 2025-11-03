@@ -191,30 +191,20 @@ namespace Doom
 
         private void DemonMoveLogic(Demon demon)
         {
-            bool validMove = false;
+            bool validMove = true;
             Position targetPosition = demon.Pos;
-            
-            for(int attempts = 0; attempts < 3 && !validMove; attempts++)
+            while (validMove)
             {
                 int x = demon.Pos.PosX + RNG.Next(-1, 2); // -1, 0, 1
                 int y = demon.Pos.PosY + RNG.Next(-1, 2);
-                
-                if (x >= 0 && x < Console.WindowWidth &&
-                    y >= 0 && y < Console.WindowHeight - 1)
+                if (x < 0 || x >= Console.WindowWidth ||
+                    y < 0 || y >= Console.WindowHeight - 1)
                 {
                     targetPosition = new Position(x, y);
-                    validMove = true;
+                    validMove = false;
                 }
             }
-            
-            if (validMove)
-            {
-                Move(demon, targetPosition);
-            }
-            else
-            {
-                Move(demon, demon.Pos);
-            }
+            Move(demon, targetPosition);
         }
 
         private void UpdateDemons()
@@ -231,19 +221,29 @@ namespace Doom
 
         private void RenderUI()
         {
-            int uiRow = Console.WindowHeight - 1;
+            int uiRow = Console.WindowHeight - 1; // UI at bottom of screen
             
+            // Save current cursor position and colors
+            var originalBg = Console.BackgroundColor;
+            var originalFg = Console.ForegroundColor;
+            
+            // Render HP
             Console.SetCursorPosition(0, uiRow);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"HP: {Player.HitPoint} ");
             
+            // Render Ammo
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"AMMO: {Player.Ammo} ");
             
+            // Render BFG Cells if needed
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write($"BFG: {Player.BFGCells}");
             
+            // Restore original colors
+            Console.BackgroundColor = originalBg;
+            Console.ForegroundColor = originalFg;
         }
 
         public void Run()
@@ -256,7 +256,7 @@ namespace Doom
                 UserAction();
                 CleanUpGameItems();
                 CleanUpDemons();
-                Thread.Sleep(10);
+                Thread.Sleep(25);
             }
         }
 
