@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Doom
+{
+    internal class Player
+    {
+        public Position Pos { get; set; }
+        public ConsoleSprite Sprite { get; set; }
+        public double FillingRatio { get; set; }
+        public int Ammo { get; set; } = 10;
+
+        private int _hitPoint = 100; 
+        public int HitPoint
+        {
+            get { return _hitPoint; }
+            set
+            {
+                _hitPoint = Math.Clamp(value, 0, MaxHealt);
+            }
+        }
+        public int BFGCells { get; set; } = 2;
+        public bool Alive { get; set; }
+        public int CombatPoints { get; set; }
+        public int MaxHealt { 
+            get { return MaxHealt; }
+            set 
+            {
+                MaxHealt = 100 + (CombatPoints / 10);
+            }
+        }
+
+        public Player(int PosX, int PosY)
+        {
+            this.Pos = new Position(PosX, PosY);
+            this.Sprite = new ConsoleSprite(ConsoleColor.Black, ConsoleColor.Green, 'O');
+            this.FillingRatio = 0.4;
+            this.Alive = true;
+        }
+    }
+}

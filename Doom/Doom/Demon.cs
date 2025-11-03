@@ -91,5 +91,14 @@ namespace Doom
                 this.State = DemonStateType.Idle;
             }
         }
+
+        public void TakeDamage(int damage)
+        {
+            this.Health -= damage;
+            if (this.Health <= 0)
+            {
+                this.Alive = false;
+            }
+        }
     }
 }

@@ -208,31 +208,24 @@ namespace Doom
                 if (PosX >= 0 && PosX < Console.WindowWidth &&
                     PosY >= 0 && PosY < Console.WindowHeight - 1)
                 {
-                    targetPosition = new Position(PosX, PosY);
+                    targetPosition = new Position(x, y);
                     validMove = true;
                 }
             }
             
             if (validMove)
             {
-                if (PosX != demon.Pos.PosX && PosY != demon.Pos.PosY)
+                if (PosX == 1 || PosX == -1 && PosY == 1 || PosY == -1 )
                 {
-                    Position horizontalPos = new Position(PosX, demon.Pos.PosY);
-                    double horizontalRatio = GetTotalFillingRatio(horizontalPos);
-                    
-                    Position verticalPos = new Position(demon.Pos.PosX, PosY);
-                    double verticalRatio = GetTotalFillingRatio(verticalPos);
-                    
-                    if (horizontalRatio + demon.FillinRatio <= 1.0 ||
-                        verticalRatio + demon.FillinRatio <= 1.0)
-                    {
-                        Move(demon, targetPosition);
-                    }
+                    bool diagonalMove = true;
+
+                    double ratio = GetTotalFillingRatio()
                 }
-                else
-                {
-                    Move(demon, targetPosition);
-                }
+                Move(demon, targetPosition);
+            }
+            else
+            {
+                Move(demon, demon.Pos);
             }
         }
 

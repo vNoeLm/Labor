@@ -215,15 +215,19 @@ namespace Doom
             
             if (validMove)
             {
+                // Check if movement is diagonal (both X and Y change)
                 if (PosX != demon.Pos.PosX && PosY != demon.Pos.PosY)
                 {
+                    // Check horizontal adjacent tile
                     Position horizontalPos = new Position(PosX, demon.Pos.PosY);
                     double horizontalRatio = GetTotalFillingRatio(horizontalPos);
                     
+                    // Check vertical adjacent tile
                     Position verticalPos = new Position(demon.Pos.PosX, PosY);
                     double verticalRatio = GetTotalFillingRatio(verticalPos);
                     
-                    if (horizontalRatio + demon.FillinRatio <= 1.0 ||
+                    // Only allow diagonal movement if both adjacent tiles are passable
+                    if (horizontalRatio + demon.FillinRatio <= 1.0 && 
                         verticalRatio + demon.FillinRatio <= 1.0)
                     {
                         Move(demon, targetPosition);
@@ -231,6 +235,7 @@ namespace Doom
                 }
                 else
                 {
+                    // For non-diagonal moves, just do regular movement
                     Move(demon, targetPosition);
                 }
             }

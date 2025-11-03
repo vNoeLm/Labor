@@ -17,23 +17,17 @@ namespace Doom
         private static void Test4()
         {
             Game game = new Game();
-            GameItem ammo = new GameItem(new Position(5, 5), ItemType.Ammo);
-            game.Items.Add(ammo);
-            GameItem medkit = new GameItem(new Position(10, 10), ItemType.Medkit);
-            game.Items.Add(medkit);
-            GameItem wall = new GameItem(new Position(5, 15), ItemType.Wall);
-            game.Items.Add(wall);
-            GameItem wall2 = new GameItem(new Position(7, 15), ItemType.Wall);
+                
+            Demon demon = new Demon(5, 5, DemonType.Imp);
+            game.Demons.Add(demon);
+            GameItem wall1 = new GameItem(new Position(4, 5), ItemType.Wall);
+            game.Items.Add(wall1);
+            GameItem wall2 = new GameItem(new Position(6, 5), ItemType.Wall);
             game.Items.Add(wall2);
-            GameItem door = new GameItem(new Position(6, 15), ItemType.Door);
-            game.Items.Add(door);
+            GameItem wall3 = new GameItem(new Position(5, 4), ItemType.Wall);
+            game.Items.Add(wall3);
 
-            Demon demon1 = new Demon(20, 5, DemonType.Imp);
-            game.Demons.Add(demon1);
-            Demon demon2 = new Demon(25, 10, DemonType.ZombieMan);
-            game.Demons.Add(demon2);
-            Demon demon3 = new Demon(30, 15, DemonType.Mancubus);
-            game.Demons.Add(demon3);
+
             game.Run();
         }
 
