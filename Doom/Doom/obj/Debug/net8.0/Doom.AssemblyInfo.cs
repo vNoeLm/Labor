@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Doom")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a70873e6c800e11122e1dc70ff903073ef8247b4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd7f47be8700601415e5ddff99b7544f2dc210af")]
 [assembly: System.Reflection.AssemblyProductAttribute("Doom")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Doom")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

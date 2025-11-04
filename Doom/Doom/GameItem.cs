@@ -15,7 +15,7 @@ namespace Doom
         public double FillingRation { get; set; }
         public bool Avalaible { get; set; }
 
-        private void SetInitialProperties()
+        public void SetInitialProperties()
         {
             switch (this.Type)
             {
@@ -58,35 +58,6 @@ namespace Doom
             this.Avalaible = true;
         }
 
-        public void Interact(Player player)
-        {
-            switch (this.Type)
-            {
-                case ItemType.Ammo:
-                    this.Avalaible = false;
-                    player.Ammo += 5;
-                    break;
-                case ItemType.BFGCell:
-                    this.Avalaible = false;
-                    player.BFGCells += 1;
-                    break;
-                case ItemType.Door:
-                    if (FillingRation == 1.0)
-                    {
-                        this.FillingRation = 0.0;
-                        this.ItemSprite = new ConsoleSprite(ConsoleColor.DarkGray, ConsoleColor.DarkYellow, '|');
-                    }
-                    else
-                    {
-                        this.FillingRation = 1.0;
-                        this.ItemSprite = new ConsoleSprite(ConsoleColor.DarkGray, ConsoleColor.Yellow, '/');
-                    }
-                    break;
-                case ItemType.Medkit:
-                    this.Avalaible = false;
-                    player.HitPoint += 10;
-                    break;
-            }
-        }
+
     }
 }

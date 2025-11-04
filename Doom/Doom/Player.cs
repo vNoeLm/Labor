@@ -11,7 +11,6 @@ namespace Doom
         public Position Pos { get; set; }
         public ConsoleSprite Sprite { get; set; }
         public double FillingRatio { get; set; }
-        public int BFGCells { get; set; } = 2;
         public bool Alive { get; set; }
         public int CombatPoints { get; set; }
 
@@ -23,7 +22,12 @@ namespace Doom
                 _MaxHealth = 100 + (CombatPoints / 10);
             }
         }
-
+        private int _BfgCell;
+        public int BfgCell
+        {
+            get { return _BfgCell; }
+            set { _BfgCell += value; }
+        }
         private int _hitPoint;
         public int HitPoint
         {
@@ -89,5 +93,20 @@ namespace Doom
                 this.Alive = false;
             }
         }   
+
+        public void PickUpAmmo()
+        {
+            this.Ammo += 5;
+        }
+
+        public void PickUpHealth()
+        {
+            this.HitPoint += 10;
+        }
+
+        public void PickUpBFGCell()
+        {
+            this.BfgCell += 1;
+        }
     }
 }

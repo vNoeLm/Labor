@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,17 @@ namespace Doom
 {
     internal class Game
     {
-        static Random RNG = new Random();
         public Player Player { get; }
         public bool Exited { get; set; }
 
         public List<GameItem> Items { get; set; }
         public List<Demon> Demons { get; set; }
+
+        public ConsoleRenderer Renderer { get; set; }
+        public GameLogic Logic { get; set; }
+
+        public Stopwatch StopWatchLogic { get; set; }
+        public Stopwatch StopWatchRenderer { get; set; }
 
         public Game()
         {
@@ -21,37 +27,10 @@ namespace Doom
             this.Exited = false;
             this.Items = new List<GameItem>();
             this.Demons = new List<Demon>();
-        }
-
-        private void RenderSingleSprite(ConsoleSprite sprite, Position pos)
-        {
-            if (pos.PosX < 0 ||
-                pos.PosY < 0 ||
-                pos.PosX >= Console.WindowWidth || 
-                pos.PosY >= Console.WindowHeight)
-            {
-                return;
-            }
-            Console.BackgroundColor = sprite.Background;
-            Console.ForegroundColor = sprite.ForeGround;
-            Console.SetCursorPosition(pos.PosX, pos.PosY);
-            Console.WriteLine(sprite.Symbol);
-        }
-
-        private void RenderGame()
-        {
-            Console.CursorVisible = false;
-            Console.ResetColor();
-            Console.Clear();
-            for (int i = 0; i < this.Items.Count; i++)
-            {
-                RenderSingleSprite(this.Items[i].ItemSprite, this.Items[i].ItemPos);
-            }
-            for (int i = 0; i < this.Demons.Count; i++)
-            {
-                RenderSingleSprite(this.Demons[i].Sprite, this.Demons[i].Pos);
-            }
-            RenderSingleSprite(this.Player.Sprite, this.Player.Pos);
+            this.Renderer = new ConsoleRenderer(this);
+            this.Logic = new GameLogic(this);
+            this.StopWatchLogic = new Stopwatch();
+            this.StopWatchRenderer = new Stopwatch();
         }
 
         private void UserAction()
@@ -80,230 +59,23 @@ namespace Doom
                         newX += 1;
                         break;
                     case ConsoleKey.E:
-                        List<GameItem> nearbyItems = GetGameItemsWithinDistance(this.Player.Pos, 1);
-                        foreach (var item in nearbyItems)
-                        {
-                            item.Interact(this.Player);
-                        }
+                        Logic.PlayerDirectInteractionLogic(Player.Pos);
                         break;
                     case ConsoleKey.F:
-                        PlayerAttackLogic();
+                        Logic.PlayerAttackLogic();
                         break;
                 }
 
                 if (newX >= 0 && newX < Console.WindowWidth &&
                     newY >= 0 && newY < Console.WindowHeight - 1)
                 {
-                    Move(this.Player, new Position(newX, newY));
-                }
-            }
-        }
-
-        private void CleanUpDemons()
-        {
-            List<Demon> demonsToRemove = new List<Demon>();
-            foreach (var demon in this.Demons)
-            {
-                if (!demon.Alive)
-                {
-                    demonsToRemove.Add(demon);
-                }
-            }
-            foreach (var demon in demonsToRemove)
-            {
-                this.Demons.Remove(demon);
-            }
-        }
-        private void CleanUpGameItems()
-        {
-            List<GameItem> itemsToRemove = new List<GameItem>();
-            foreach (var item in this.Items)
-            {
-                if (!item.Avalaible)
-                {
-                    itemsToRemove.Add(item);
-                }
-            }
-            foreach (var item in itemsToRemove)
-            {
-                this.Items.Remove(item);
-            }
-        }
-
-        private List<Demon> GetDemonsWithinDistance(Position Pos, double distance)
-        {
-            List<Demon> nearbyDemons = new List<Demon>();
-            foreach (var demon in this.Demons)
-            {
-                double dist = Position.Distance(Pos, demon.Pos);
-                if (dist <= distance)
-                {
-                    nearbyDemons.Add(demon);
-                }
-            }
-            return nearbyDemons;
-        }
-        private List<GameItem> GetGameItemsWithinDistance(Position Pos, double distance)
-        {
-            List<GameItem> nearbyItems = new List<GameItem>();
-            foreach (var item in this.Items)
-            {
-                double dist = Position.Distance(Pos, item.ItemPos);
-                if (dist <= distance)
-                {
-                    nearbyItems.Add(item);
-                }
-            }
-
-            return nearbyItems;
-        }
-
-        private double GetTotalFillingRatio(Position Pos)
-        {
-            List<GameItem> items = GetGameItemsWithinDistance(Pos, 0.0);
-            List<Demon> demons = GetDemonsWithinDistance(Pos, 0.0);
-            double totalFillingRatio = 0.0;
-            foreach (var item in items)
-            {
-                totalFillingRatio += item.FillingRation;
-            }
-            foreach (var demon in demons)
-            {
-                totalFillingRatio += demon.FillinRatio;
-            }
-            return totalFillingRatio;
-        }
-
-        private void Move(Player player, Position MoveToPos)
-        {
-            double totalFillingRatio = GetTotalFillingRatio(MoveToPos);
-            if (totalFillingRatio + player.FillingRatio <= 1.0)
-            {
-                player.Pos = MoveToPos;
-            }
-        }
-
-        private void Move(Demon demon, Position MoveToPos)
-        {
-            double totalFillingRatio = GetTotalFillingRatio(MoveToPos);
-            if (totalFillingRatio + demon.FillinRatio <= 1.0)
-            {
-                demon.Pos = MoveToPos;
-            }
-        }
-
-        private void DemonMoveLogic(Demon demon)
-        {
-            bool validMove = false;
-            Position targetPosition = demon.Pos;
-
-            int PosX = 0;
-            int PosY = 0;
-
-            for (int attempts = 0; attempts < 3 && !validMove; attempts++)
-            {
-                PosX = demon.Pos.PosX + RNG.Next(-1, 2); // -1, 0, 1
-                PosY = demon.Pos.PosY + RNG.Next(-1, 2);
-                
-                if (PosX >= 0 && PosX < Console.WindowWidth &&
-                    PosY >= 0 && PosY < Console.WindowHeight - 1)
-                {
-                    targetPosition = new Position(PosX, PosY);
-                    validMove = true;
+                    Logic.Move(this.Player, new Position(newX, newY));
+                    Logic.PlayerIndirectInteractionLogic(Player.Pos);
                 }
             }
             
-            if (validMove)
-            {
-                if (PosX != demon.Pos.PosX && PosY != demon.Pos.PosY)
-                {
-                    Position horizontalPos = new Position(PosX, demon.Pos.PosY);
-                    double horizontalRatio = GetTotalFillingRatio(horizontalPos);
-                    
-                    Position verticalPos = new Position(demon.Pos.PosX, PosY);
-                    double verticalRatio = GetTotalFillingRatio(verticalPos);
-                    
-                    if (horizontalRatio + demon.FillinRatio <= 1.0 ||
-                        verticalRatio + demon.FillinRatio <= 1.0)
-                    {
-                        Move(demon, targetPosition);
-                    }
-                }
-                else
-                {
-                    Move(demon, targetPosition);
-                }
-            }
         }
 
-        private void UpdateDemons()
-        {
-            foreach (var demon in this.Demons)
-            {
-                demon.UpdateState(this.Player);
-                if (demon.State == DemonStateType.Move)
-                {
-                    DemonMoveLogic(demon);
-                }
-                if (demon.State == DemonStateType.Attack)
-                {
-                    DemonAttackLogic(demon);
-                }
-            }
-        }
-
-        public void PlayerAttackLogic()
-        {
-            if (this.Player.Ammo > 0)
-            {
-                List<Demon> nearbyDemons = GetDemonsWithinDistance(this.Player.Pos, this.Player.SightRange);
-                foreach (var demon in nearbyDemons)
-                {
-                    double dist = Position.Distance(this.Player.Pos, demon.Pos);
-                    int DUD = RNG.Next(35, 106);
-                    int dmg = (2 * DUD) / (1 + (int)dist);
-                    demon.TakeDamage(dmg);
-                    this.Player.Shoot();
-                    if (!demon.Alive)
-                    {
-                        switch (demon.Type)
-                        {
-                            case DemonType.Imp:
-                                this.Player.AddCombatPoints(3);
-                                break;
-                            case DemonType.ZombieMan:
-                                this.Player.AddCombatPoints(1);
-                                break;
-                            case DemonType.Mancubus:
-                                this.Player.AddCombatPoints(10);
-                                break;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void DemonAttackLogic(Demon demon)
-        {
-            double dist = Position.Distance(this.Player.Pos, demon.Pos);
-            if (dist <= demon.AttackRange)
-            {
-                int DUD = 0;
-                switch (demon.Type)
-                {
-                    case DemonType.Imp:
-                        DUD = RNG.Next(3, 25);
-                        break;
-                    case DemonType.ZombieMan:
-                        DUD = RNG.Next(3, 15);
-                        break;
-                    case DemonType.Mancubus:
-                        DUD = RNG.Next(8, 64);
-                        break;
-                }
-                this.Player.TakeDamage(DUD);
-            }
-        }
 
         private void RenderUI()
         {
@@ -318,7 +90,7 @@ namespace Doom
             Console.Write($"AMMO: {Player.Ammo} ");
             
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"BFG: {Player.BFGCells}");
+            Console.Write($"BFG: {Player.BfgCell}");
             
         }
 
@@ -326,13 +98,20 @@ namespace Doom
         {
             while (!this.Exited && this.Player.Alive)
             {
-                RenderGame();
-                RenderUI();
-                UpdateDemons();
-                UserAction();
-                CleanUpGameItems();
-                CleanUpDemons();
-                Thread.Sleep(20);
+                StopWatchLogic.Start();
+                StopWatchRenderer.Start();
+                if (StopWatchLogic.ElapsedMilliseconds > 500)
+                {
+                    Logic.UpdateGameState();
+                    StopWatchLogic.Restart();
+                }
+                if (StopWatchRenderer.ElapsedMilliseconds > 25)
+                {
+                    Renderer.RenderGame();
+                    RenderUI();
+                    UserAction();
+                    StopWatchRenderer.Restart();
+                }
             }
         }
 
