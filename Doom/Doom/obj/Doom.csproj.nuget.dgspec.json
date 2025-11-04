@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj": {}
+    "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj": {
+    "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj",
+        "projectUniqueName": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj",
         "projectName": "Doom",
-        "projectPath": "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj",
-        "packagesPath": "C:\\Users\\vnoel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vnoel\\Documents\\GitHub\\Labor\\Doom\\Doom\\obj\\",
+        "projectPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Doom\\Doom\\Doom.csproj",
+        "packagesPath": "C:\\Users\\Noel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Doom\\Doom\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vnoel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Noel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

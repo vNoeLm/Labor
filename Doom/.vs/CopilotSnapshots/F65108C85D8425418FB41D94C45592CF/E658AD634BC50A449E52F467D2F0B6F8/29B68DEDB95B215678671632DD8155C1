@@ -26,7 +26,7 @@ namespace Doom
         public int BfgCell
         {
             get { return _BfgCell; }
-            set { _BfgCell = Math.Max(0, value); } 
+            set { _BfgCell += value; }
         }
         private int _hitPoint;
         public int HitPoint
@@ -69,8 +69,7 @@ namespace Doom
             this.HitPoint = 100;
             this.SightRange = 8;
             this.Ammo = 5;
-            this.CombatPoints = 0;  
-            this.BfgCell = 0;    
+
         }
 
         public void Shoot()

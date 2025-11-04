@@ -18,27 +18,7 @@ namespace Doom
         {
             Game game = new Game();
 
-            GameItem door = new GameItem(new Position(5, 5),ItemType.Door);
-            game.Items.Add(door);
-            GameItem levelExit = new GameItem(new Position(2,2), ItemType.LevelExit);
-            game.Items.Add(levelExit);
-
-            GameItem ammo = new GameItem(new Position(6,6), ItemType.Ammo);
-            game.Items.Add(ammo);
-
-            GameItem Hp = new GameItem(new Position(7,7), ItemType.Medkit);
-            game.Items.Add(Hp);
-
-            GameItem waste = new GameItem(new Position(8,8), ItemType.ToxicWaste);
-            game.Items.Add(waste);
-
-            GameItem bf = new GameItem(new Position(3, 5), ItemType.BFGCell);
-            game.Items.Add(bf);
-            Demon demon = new Demon(8,8, DemonType.Imp);
-            game.Demons.Add(demon);
-
-            GameItem wall = new GameItem(new Position(6,5), ItemType.Wall);
-            game.Items.Add(wall);
+            game.LoadMapFromPlainText("pmp_arena.txt");
 
             game.Run();
         }

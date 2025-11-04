@@ -24,7 +24,7 @@ namespace Doom
 
         public Game()
         {
-            this.Player = new Player(0, 0);
+            this.Player = new Player(0, 0); // Initialize player with default position
             this.Exited = false;
             this.Items = new List<GameItem>();
             this.Demons = new List<Demon>();
@@ -122,11 +122,11 @@ namespace Doom
                             GameItem wall = new GameItem(pos, ItemType.Wall);
                             Items.Add(wall);
                             break;
-                        case 'z':
+                        case 'Z':
                             Demon demon = new Demon(i, y, DemonType.ZombieMan);
                             Demons.Add(demon);
                             break;
-                        case 'i':
+                        case 'I':
                             Demon imp = new Demon(i, y, DemonType.Imp);
                             Demons.Add(imp);
                             break;
@@ -134,8 +134,8 @@ namespace Doom
                             Demon mancubus = new Demon(i, y, DemonType.Mancubus);
                             Demons.Add(mancubus);
                             break;
-                        case 'p':
-                            this.Player.Pos = new Position(i, y);
+                        case 'P':
+                            this.Player = new Player(i, y); // Create new player at map position
                             break;
                         case '_':
                             // empty space
@@ -172,7 +172,7 @@ namespace Doom
             {
                 StopWatchLogic.Start();
                 StopWatchRenderer.Start();
-                if (StopWatchLogic.ElapsedMilliseconds > 250)
+                if (StopWatchLogic.ElapsedMilliseconds > 500)
                 {
                     Logic.UpdateGameState();
                     StopWatchLogic.Restart();
