@@ -10,7 +10,6 @@ namespace Doom
         {
             //Test1();
             //Test2();
-            //Test3();
             Test4();
         }
 
@@ -18,18 +17,9 @@ namespace Doom
         {
             Game game = new Game();
 
-            game.LoadMapFromPlainText("pmp_arena.txt");
+            game.LoadMapFromPlainText("demo_map.txt");
 
             game.Run();
-        }
-
-        private static void Test3()
-        {
-            Player player = new Player(10, 2);
-            Console.BackgroundColor = player.Sprite.Background;
-            Console.ForegroundColor = player.Sprite.ForeGround;
-            Console.SetCursorPosition(player.Pos.PosX, player.Pos.PosY);
-            Console.WriteLine(player.Sprite.Symbol);
         }
 
         private static void Test2()

@@ -28,3 +28,6 @@ C:\Users\vnoel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\refint\Doom.dll
 C:\Users\vnoel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.pdb
 C:\Users\vnoel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.genruntimeconfig.cache
 C:\Users\vnoel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\ref\Doom.dll
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Interop.MediaPlayer.dll
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Interop.WMPLib.dll
+C:\Users\Noel\Documents\GitHub\Labor\Doom\Doom\obj\Debug\net8.0\Doom.csproj.ResolveComReference.cache

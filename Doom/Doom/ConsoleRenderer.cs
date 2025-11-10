@@ -10,11 +10,34 @@ namespace Doom
     {
 
         public Game Game { get; set; }
+        public Player Player { get; set; }
 
-        public ConsoleRenderer(Game Game)
+        public ConsoleRenderer(Game Game, Player Player)
         {
             this.Game = Game;
+            this.Player = Player;
         }
+
+        public void RenderUI()
+        {
+            int uiRow = Console.WindowHeight - 1;
+
+            Console.SetCursorPosition(0, uiRow);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"HP: {Player.HitPoint} ");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"AMMO: {Player.Ammo} ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"BFG: {Player.BfgCell} ");
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write($"Combat Points: {Player.CombatPoints} ");
+
+        }
+
         public void RenderGame()
         {
             Console.CursorVisible = false;

@@ -14,6 +14,8 @@ namespace Doom
         public bool Alive { get; set; }
         public int CombatPoints { get; set; }
 
+        public Game Game { get; set; }
+
         private int _MaxHealth = 100;
         public int MaxHealt { 
             get { return _MaxHealth; }
@@ -26,8 +28,10 @@ namespace Doom
         public int BfgCell
         {
             get { return _BfgCell; }
-            set { _BfgCell = Math.Max(0, value); } 
+            set { _BfgCell = Math.Clamp(value, 0, _MaxBfgCell); } 
         }
+
+        public int _MaxBfgCell = 3;
         private int _hitPoint;
         public int HitPoint
         {
@@ -60,7 +64,7 @@ namespace Doom
 
         public int SightRange { get; set; }
 
-        public Player(int PosX, int PosY)
+        public Player(int PosX, int PosY, Game Game)
         {
             this.Pos = new Position(PosX, PosY);
             this.Sprite = new ConsoleSprite(ConsoleColor.Black, ConsoleColor.Green, 'O');
@@ -70,7 +74,8 @@ namespace Doom
             this.SightRange = 8;
             this.Ammo = 5;
             this.CombatPoints = 0;  
-            this.BfgCell = 0;    
+            this.BfgCell = 0; 
+            this.Game = Game;
         }
 
         public void Shoot()
@@ -78,19 +83,32 @@ namespace Doom
             if (this.Ammo > 0)
             {
                 this.Ammo -= 1;
+                Game.PlaySoundEffect(Game.SoundEffectType.Shotgun);
             }
         }
 
-        public void AddCombatPoints(int CombaitPoint)
+        public void ShootBFG()
         {
-            this.CombatPoints += CombaitPoint;
+            if (this.BfgCell > 0)
+            {
+                this.BfgCell -= 1;
+                Game.PlaySoundEffect(Game.SoundEffectType.BFG);
+            }
+        }
+
+        public void AddCombatPoints(int CombatPoint)
+        {
+            this.CombatPoints += CombatPoint;
         }
 
         public void TakeDamage(int damage)
         {
             this.HitPoint -= damage;
+            Game.PlaySoundEffect(Game.SoundEffectType.Pain);
             if (this.HitPoint <= 0)
             {
+                Game.PlaySoundEffect(Game.SoundEffectType.PlayerDeath);
+                Thread.Sleep(1000);
                 this.Alive = false;
             }
         }   
@@ -98,16 +116,19 @@ namespace Doom
         public void PickUpAmmo()
         {
             this.Ammo += 5;
+            Game.PlaySoundEffect(Game.SoundEffectType.ItemPickup);
         }
 
         public void PickUpHealth()
         {
             this.HitPoint += 10;
+            Game.PlaySoundEffect(Game.SoundEffectType.ItemPickup);
         }
 
         public void PickUpBFGCell()
         {
             this.BfgCell += 1;
+            Game.PlaySoundEffect(Game.SoundEffectType.ItemPickup);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,37 @@ namespace Doom
                     int dmg = (2 * DUD) / (1 + (int)dist);
                     demon.TakeDamage(dmg);
                     this.Game.Player.Shoot();
+                    if (!demon.Alive)
+                    {
+                        switch (demon.Type)
+                        {
+                            case DemonType.Imp:
+                                this.Game.Player.AddCombatPoints(3);
+                                break;
+                            case DemonType.ZombieMan:
+                                this.Game.Player.AddCombatPoints(1);
+                                break;
+                            case DemonType.Mancubus:
+                                this.Game.Player.AddCombatPoints(10);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void PlayerBFGAttackLogic()
+        {
+            if (this.Game.Player.BfgCell > 0)
+            {
+                List<Demon> nearbyDemons = GetDemonsWithinDistance(this.Game.Player.Pos, this.Game.Player.SightRange);
+                foreach (var demon in nearbyDemons)
+                {
+                    double dist = Position.Distance(this.Game.Player.Pos, demon.Pos);
+                    int DUD = RNG.Next(100, 801);
+                    int dmg = (3 * DUD) / (1 + (int)dist);
+                    demon.TakeDamage(dmg);
+                    this.Game.Player.ShootBFG();
                     if (!demon.Alive)
                     {
                         switch (demon.Type)
@@ -218,14 +250,22 @@ namespace Doom
         public void PlayerDirectInteractionLogic(Position PlayerPos)
         {
             List<GameItem> items = GetGameItemsWithinDistance(PlayerPos, 1.0);
+            Stopwatch sw = new Stopwatch();
             foreach (var item in items)
             {
                 switch (item.Type)
                 {
                     case ItemType.Door:
                         Interact(item);
+                        Game.PlaySoundEffect(Game.SoundEffectType.Door);
                         break;
                     case ItemType.LevelExit:
+                        Game.StopBackgroundMusic();
+                        Game.PlaySoundEffect(Game.SoundEffectType.LevelComplete);
+                        while (!Console.KeyAvailable)
+                        {
+                            Thread.Sleep(16);
+                        }
                         Interact(item);
                         break;
                 }

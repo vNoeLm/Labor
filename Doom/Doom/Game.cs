@@ -5,11 +5,13 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using WMPLib;
 
 namespace Doom
 {
     internal class Game
     {
+        public enum SoundEffectType { BFG, Door, ItemPickup, Pain, PlayerDeath, Shotgun, LevelComplete }
         public Player Player { get; set; }
         public bool Exited { get; set; }
 
@@ -22,16 +24,22 @@ namespace Doom
         public Stopwatch StopWatchLogic { get; set; }
         public Stopwatch StopWatchRenderer { get; set; }
 
+        public WindowsMediaPlayer MusicPlayer { get; set; }
+        public WindowsMediaPlayer SfxPlayer { get; set; }
+
         public Game()
         {
-            this.Player = new Player(0, 0);
+            this.Player = new Player(0, 0, this);
             this.Exited = false;
             this.Items = new List<GameItem>();
             this.Demons = new List<Demon>();
-            this.Renderer = new ConsoleRenderer(this);
+            this.Renderer = new ConsoleRenderer(this, Player);
             this.Logic = new GameLogic(this);
             this.StopWatchLogic = new Stopwatch();
             this.StopWatchRenderer = new Stopwatch();
+            this.MusicPlayer = new WindowsMediaPlayer();
+            this.SfxPlayer = new WindowsMediaPlayer();
+            PlayBackgroundMusic("sounds/doom_music.mp3");
         }
 
         private void UserAction()
@@ -64,6 +72,9 @@ namespace Doom
                         break;
                     case ConsoleKey.F:
                         Logic.PlayerAttackLogic();
+                        break;
+                    case ConsoleKey.G:
+                        Logic.PlayerBFGAttackLogic();
                         break;
                 }
 
@@ -149,21 +160,48 @@ namespace Doom
             fileStream.Close();
         }
 
-        private void RenderUI()
+
+
+        public void PlaySoundEffect(SoundEffectType SoundType)
         {
-            int uiRow = Console.WindowHeight - 1;
-            
-            Console.SetCursorPosition(0, uiRow);
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write($"HP: {Player.HitPoint} ");
-            
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write($"AMMO: {Player.Ammo} ");
-            
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"BFG: {Player.BfgCell}");
-            
+            switch (SoundType)
+            {
+                case SoundEffectType.Door:
+                    SfxPlayer.URL = "sounds/door.mp3";
+                    break;
+                case SoundEffectType.ItemPickup:
+                    SfxPlayer.URL = "sounds/item_pickup.mp3";
+                    break;
+                case SoundEffectType.Pain:
+                    SfxPlayer.URL = "sounds/pain.mp3";
+                    break;
+                case SoundEffectType.PlayerDeath:
+                    SfxPlayer.URL = "sounds/player_death.mp3";
+                    break;
+                case SoundEffectType.Shotgun:
+                    SfxPlayer.URL = "sounds/shotgun.mp3";
+                    break;
+                case SoundEffectType.BFG:
+                    SfxPlayer.URL = "sounds/bfg.mp3";
+                    break;
+                case SoundEffectType.LevelComplete:
+                    SfxPlayer.URL = "sounds/level_complete.mp3";
+                    break;
+            }
+            SfxPlayer.controls.play();
+
+        }
+
+        public void PlayBackgroundMusic(string Path)
+        {
+            MusicPlayer.URL = Path;
+            MusicPlayer.settings.setMode("loop", true);
+            MusicPlayer.controls.play();
+        }
+
+        public void StopBackgroundMusic()
+        {
+            MusicPlayer.controls.stop();
         }
 
         public void Run()
@@ -180,7 +218,7 @@ namespace Doom
                 if (StopWatchRenderer.ElapsedMilliseconds > 25)
                 {
                     Renderer.RenderGame();
-                    RenderUI();
+                    Renderer.RenderUI();
                     UserAction();
                     StopWatchRenderer.Restart();
                 }
