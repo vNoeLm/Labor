@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Hazi2\\Hazi2\\Hazi2.csproj",
+      "projectUniqueName": "C:\\Users\\Noel\\Desktop\\GitHub\\Labor\\Hazi2\\Hazi2\\Hazi2.csproj",
       "projectName": "Hazi2",
-      "projectPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Hazi2\\Hazi2\\Hazi2.csproj",
+      "projectPath": "C:\\Users\\Noel\\Desktop\\GitHub\\Labor\\Hazi2\\Hazi2\\Hazi2.csproj",
       "packagesPath": "C:\\Users\\Noel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Noel\\Documents\\GitHub\\Labor\\Hazi2\\Hazi2\\obj\\",
+      "outputPath": "C:\\Users\\Noel\\Desktop\\GitHub\\Labor\\Hazi2\\Hazi2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

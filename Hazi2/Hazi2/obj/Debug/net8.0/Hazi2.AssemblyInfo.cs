@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hazi2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cbb089fe8b8b44639fa58b9c7a1485685b2ad51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+218ee5c71073939a21e1fededfc67d872106753d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hazi2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hazi2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
